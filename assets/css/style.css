@@ -1,0 +1,9 @@
+.wins, .losses, .playerScore, .randomNumber, #crystals {
+	font-size: 24px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+#number-selected {
+	text-align: center;
+}

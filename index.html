@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Crystals Game</title>
+
+   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+   
+</head>
+<body>
+
+<!-- Pseudocode:
+   Computer generates a random number.
+   Player clicks on crystal and gets amount added to the counter.
+   If counter === random number, increase wins counter by 1 and alert "You win!"
+   Else if counter > random number, decrease losses counter by 1, alert "You lose!" and reset game.
+   Reset game has counters = 0, another random number is generated.  -->
+   <h1 class="randomNumber">Number to Guess: <span id="number-selected"></span></h1>
+   <p class="wins"><b>Wins: </b><span id="wins"></span></p>
+   <p class="losses"><b>Losses: </b><span id="losses"></span></p>
+   <p class="playerScore"><b>Player Score: </b><span id="playerscore"></span></p>
+
+   <div id="crystals">
+   <img class="crystal image1" src="assets/images/diamond.jpeg" class="diamond" alt="diamond" width="250" height="250">
+       <img class="crystal image2" src="assets/images/sapphire.jpeg" class="sapphire" alt="sapphire" width="330" height="330">
+       <img class="crystal image3" src="assets/images/emerald.jpeg" class="emerald" alt="emerald" width="260" height="260">
+       <img class="crystal image4" src="assets/images/garnet.jpg" class="garnet" alt="garnet" width="270" height="270">
+   
+   </div>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+   <script type="text/javascript">
+
+       var computerPick = Math.ceil(Math.random() * 101) +19;
+       $("#number-selected").text(computerPick);
+
+       var playerScore = 0;
+
+       var wins = 0;
+
+       var losses = 0;
+
+       var images = ["assets/images/diamond.jpeg", "assets/images/sapphire.jpeg", "assets/images/emerald.jpeg", "assets/images/garnet.jpg"];
+
+       for (var i = 0; i<images.length; i++) {
+
+          var imageNumber = $("<button>"); 
+
+          imageNumber.attr("image-crystal", images[i]);
+
+          var crystal_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+          imageNumber.attr("crystalNumber", Math.floor(Math.random() * 12))
+       }
+       
+       
+       var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
+
+       $(".crystal").on("click", function() {
+           playerScore += increment;
+           alert("New Score: " + playerScore);
+
+           if (playerScore === computerPick) {
+               alert("You win!");
+           }
+
+           else if (playerScore >= computerPick) {
+               alert("You lose!");
+           }
+       });
+
+       for (var i = 0; i<crystal_numbers.length; i++) {
+
+           // var image = $("<img>");
+           // image.addClass("image-icon");
+           $(".diamond").attr("data-picture", crystal_numbers[i]);
+           image.text(crystal_numbers[i]);
+           $(".diamond").append(image);
+       }
+
+   </script>
