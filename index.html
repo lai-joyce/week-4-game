@@ -1,12 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <title>Crystals Game</title>
-
    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-
    
 </head>
 <body>
@@ -14,81 +12,8 @@
    <p class="wins"><b>Wins: </b><span id="wins"></span></p>
    <p class="losses"><b>Losses: </b><span id="losses"></span></p>
    <p class="playerScore"><b>Player Score: </b><span id="playerscore"></span></p>
-
    <div id="crystals">
-   <img class="crystal image1" src="assets/images/diamond.jpeg" class="diamond" alt="diamond" width="250" height="250">
-       <img class="crystal image2" src="assets/images/sapphire.jpeg" class="sapphire" alt="sapphire" width="330" height="330">
-       <img class="crystal image3" src="assets/images/emerald.jpeg" class="emerald" alt="emerald" width="260" height="260">
-       <img class="crystal image4" src="assets/images/garnet.jpg" class="garnet" alt="garnet" width="270" height="270">
-   
-   </div>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-   <script type="text/javascript">
-
-    $(document).ready(function() {
-
-       var computerPick = Math.ceil(Math.random() * 101) +19;
-       $("#number-selected").text(computerPick);
-
-       var playerScore = 0;
-
-       var wins = 0;
-
-       var losses = 0;
-
-       var images = ["assets/images/diamond.jpeg", "assets/images/sapphire.jpeg", "assets/images/emerald.jpeg", "assets/images/garnet.jpg"];
-
-       var crystal_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-       var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-
-
-       $(".crystal").on("click", function() {
-
-        $(".diamond").attr("number1", crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)] );
-
-          for (var i = 0; i<images.length; i++) {
-          var num1 = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-          playerScore += num1
-          }
-
-           var increment = 
-           playerScore += increment;
-           alert("New Score: " + playerScore);
-
-           if (playerScore === computerPick) {
-               alert("You win!");
-           }
-
-           else if (playerScore >= computerPick) {
-               alert("You lose!");
-           }
-       });
-
-    });
-
-   </script>
-  </body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Crystals Game</title>
-
-   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-
-   
-</head>
-<body>
-   <h1 class="randomNumber">Number to Guess: <span id="number-selected"></span></h1>
-   <p class="wins"><b>Wins: </b><span id="wins"></span></p>
-   <p class="losses"><b>Losses: </b><span id="losses"></span></p>
-   <p class="playerScore"><b>Player Score: </b><span id="playerscore"></span></p>
-
-   <div id="crystals">
-   <img class="crystal-image1" src="assets/images/diamond.jpeg" class="diamond" alt="diamond" width="250" height="250">
+       <img class="crystal-image1" src="assets/images/diamond.jpeg" class="diamond" alt="diamond" width="250" height="250">
        <img class="crystal-image2" src="assets/images/sapphire.jpeg" class="sapphire" alt="sapphire" width="330" height="330">
        <img class="crystal-image3" src="assets/images/emerald.jpeg" class="emerald" alt="emerald" width="260" height="260">
        <img class="crystal-image4" src="assets/images/garnet.jpg" class="garnet" alt="garnet" width="270" height="270">
@@ -96,84 +21,113 @@
    </div>
    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
    <script type="text/javascript">
-
     $(document).ready(function() {
-
-       var computerPick = Math.ceil(Math.random() * 101) +19;
+       var computerPick = Math.ceil(Math.random() * 101 +19);
        $("#number-selected").text(computerPick);
-
-       var playerScore = 0;
-
+       var playerSum = 0;
        var wins = 0;
-
        var losses = 0;
 
-       var images = ["assets/images/diamond.jpeg", "assets/images/sapphire.jpeg", "assets/images/emerald.jpeg", "assets/images/garnet.jpg"];
+       num1 = Math.round(Math.random()*11 + 1);
+       num2 = Math.round(Math.random()*11 + 1);
+       num3 = Math.round(Math.random()*11 + 1);
+       num4 = Math.round(Math.random()*11 + 1);
 
-       var crystal_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-       var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
+       function resetGame() {
+        var computerPick = Math.ceil(Math.random() * 101 +19);
+        $(".randomNumber").text("Number to Guess: " + computerPick);
+        num1 = Math.round(Math.random()*11 + 1);
+        num2 = Math.round(Math.random()*11 + 1);
+        num3 = Math.round(Math.random()*11 + 1);
+        num4 = Math.round(Math.random()*11 + 1);
 
+        playerSum = 0;
+        $(".playerScore").text("Player Score: " + playerSum);
+       }
+       
+           
 
        $(".crystal-image1").on("click", function() {
 
-           var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-           playerScore += increment;
-           alert("New Score: " + playerScore);
+           playerSum += num1;
+           alert("New Score: " + playerSum);
+           $(".playerScore").text("Player Score: " + playerSum);
 
-           if (playerScore === computerPick) {
+           if (playerSum === computerPick) {
                alert("You win!");
-           }
+               wins ++;
+               $(".wins").text("Wins: " + wins);
+               resetGame();
 
-           else if (playerScore >= computerPick) {
+           }
+           else if (playerSum>= computerPick) {
                alert("You lose!");
+               losses ++;
+               $(".losses").text("Losses: " + losses);
+               resetGame();
            }
        });
-
        $(".crystal-image2").on("click", function() {
            
-           var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-           playerScore += increment;
-           alert("New Score: " + playerScore);
+           
+           playerSum += num2;
+           alert("New Score: " + playerSum);
+           $(".playerScore").text("Player Score: " + playerSum);
 
-           if (playerScore === computerPick) {
+           if (playerSum === computerPick) {
                alert("You win!");
+               wins ++;
+               $(".wins").text("Wins: " + wins);
+               resetGame();
            }
-
-           else if (playerScore >= computerPick) {
+           else if (playerSum >= computerPick) {
                alert("You lose!");
+               losses ++;
+               $(".losses").text("Losses: " + losses);
+               resetGame();
            }
        });
-
        $(".crystal-image3").on("click", function() {
            
-           var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-           playerScore += increment;
-           alert("New Score: " + playerScore);
+           
+           playerSum += num3;
+           alert("New Score: " + playerSum);
+           $(".playerScore").text("Player Score: " + playerSum);
 
-           if (playerScore === computerPick) {
+           if (playerSum === computerPick) {
                alert("You win!");
+               wins ++;
+               $(".wins").text("Wins: " + wins);
+               resetGame();
            }
-
-           else if (playerScore >= computerPick) {
+           else if (playerSum >= computerPick) {
                alert("You lose!");
+               losses ++;
+               $(".losses").text("Losses: " + losses);
+               resetGame();
            }
        });
-
        $(".crystal-image4").on("click", function() {
            
-           var increment = crystal_numbers[Math.floor(Math.random() * crystal_numbers.length)]
-           playerScore += increment;
-           alert("New Score: " + playerScore);
+           
+           playerSum += num4;
+           alert("New Score: " + playerSum);
+           $(".playerScore").text("Player Score: " + playerSum);
 
-           if (playerScore === computerPick) {
+           if (playerSum === computerPick) {
                alert("You win!");
-           }
+               wins ++;
+               $(".wins").text("Wins: " + losses);
+               resetGame();
 
-           else if (playerScore >= computerPick) {
+           }
+           else if (playerSum >= computerPick) {
                alert("You lose!");
+               losses ++;
+               $(".losses").text("Losses: " + losses);
+               resetGame();
+               
            }
        });
-
     });
-
-   </script> -->
+   </script>
