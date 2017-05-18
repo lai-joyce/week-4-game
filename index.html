@@ -21,6 +21,7 @@
    </div>
    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
    <script type="text/javascript">
+
     $(document).ready(function() {
        var computerPick = Math.ceil(Math.random() * 101 +19);
        $("#number-selected").text(computerPick);
@@ -33,101 +34,79 @@
        num3 = Math.round(Math.random()*11 + 1);
        num4 = Math.round(Math.random()*11 + 1);
 
+
+       function updateDisplay() {
+          $("#number-selected").text(computerPick);
+          $("#wins").text(wins);
+          $("#losses").text(losses);
+          $("#playerscore").text(playerSum);
+       }
+
        function resetGame() {
         var computerPick = Math.ceil(Math.random() * 101 +19);
         $(".randomNumber").text("Number to Guess: " + computerPick);
-        num1 = Math.round(Math.random()*11 + 1);
-        num2 = Math.round(Math.random()*11 + 1);
-        num3 = Math.round(Math.random()*11 + 1);
-        num4 = Math.round(Math.random()*11 + 1);
+
+         num1 = Math.round(Math.random()*11 + 1);
+         num2 = Math.round(Math.random()*11 + 1);
+         num3 = Math.round(Math.random()*11 + 1);
+         num4 = Math.round(Math.random()*11 + 1);
 
         playerSum = 0;
         $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
        }
-       
-           
 
-       $(".crystal-image1").on("click", function() {
-
-           playerSum += num1;
-           alert("New Score: " + playerSum);
-           $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
-
+       function changer() {
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
-               $("#wins").html("<b>Wins: " + wins + "</b");
+               $("#wins").html(wins);
                resetGame();
 
            }
            else if (playerSum>= computerPick) {
                alert("You lose!");
                losses ++;
-               $("#losses").html("<b>Losses: " + losses + "</b");
+               $("#losses").html(losses);
                resetGame();
            }
-       });
+       }
+       
+        updateDisplay();
+
+       $(".crystal-image1").on("click", function() {
+
+           playerSum += num1;
+           alert("New Score: " + playerSum);
+           $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
+           changer();
+
+           });
+
        $(".crystal-image2").on("click", function() {
-           
            
            playerSum += num2;
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
+           changer();
 
-           if (playerSum === computerPick) {
-               alert("You win!");
-               wins ++;
-               $(".wins").html("<b>Wins: " + wins + "</b>");
-               resetGame();
-           }
-           else if (playerSum >= computerPick) {
-               alert("You lose!");
-               losses ++;
-               $(".losses").html("<b>Losses: " + losses + "</b");
-               resetGame();
-           }
-       });
+           });
+
        $(".crystal-image3").on("click", function() {
-           
            
            playerSum += num3;
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
+           changer();
 
-           if (playerSum === computerPick) {
-               alert("You win!");
-               wins ++;
-               $(".wins").html("<b>Wins: " + wins + "</b>");
-               resetGame();
-           }
-           else if (playerSum >= computerPick) {
-               alert("You lose!");
-               losses ++;
-               $(".losses").html("<b>Losses: " + losses + "</b");
-               resetGame();
-           }
-       });
+           });
+
        $(".crystal-image4").on("click", function() {
-           
            
            playerSum += num4;
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
+           changer();
 
-           if (playerSum === computerPick) {
-               alert("You win!");
-               wins ++;
-               $(".wins").html("<b>Wins: " + wins + "</b>");
-               resetGame();
-
-           }
-           else if (playerSum >= computerPick) {
-               alert("You lose!");
-               losses ++;
-               $(".losses").html("<b>Losses: " + losses + "</b");
-               resetGame();
-               
-           }
-       });
+           });
     });
    </script>
