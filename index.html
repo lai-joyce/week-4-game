@@ -42,7 +42,7 @@
         num4 = Math.round(Math.random()*11 + 1);
 
         playerSum = 0;
-        $(".playerScore").text("Player Score: " + playerSum);
+        $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
        }
        
            
@@ -51,19 +51,19 @@
 
            playerSum += num1;
            alert("New Score: " + playerSum);
-           $(".playerScore").text("Player Score: " + playerSum);
+           $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
 
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
-               $(".wins").text("Wins: " + wins);
+               $("#wins").html("<b>Wins: " + wins + "</b");
                resetGame();
 
            }
            else if (playerSum>= computerPick) {
                alert("You lose!");
                losses ++;
-               $(".losses").text("Losses: " + losses);
+               $("#losses").html("<b>Losses: " + losses + "</b");
                resetGame();
            }
        });
@@ -72,18 +72,18 @@
            
            playerSum += num2;
            alert("New Score: " + playerSum);
-           $(".playerScore").text("Player Score: " + playerSum);
+           $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
 
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
-               $(".wins").text("Wins: " + wins);
+               $(".wins").html("<b>Wins: " + wins + "</b>");
                resetGame();
            }
            else if (playerSum >= computerPick) {
                alert("You lose!");
                losses ++;
-               $(".losses").text("Losses: " + losses);
+               $(".losses").html("<b>Losses: " + losses + "</b");
                resetGame();
            }
        });
@@ -92,18 +92,18 @@
            
            playerSum += num3;
            alert("New Score: " + playerSum);
-           $(".playerScore").text("Player Score: " + playerSum);
+           $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
 
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
-               $(".wins").text("Wins: " + wins);
+               $(".wins").html("<b>Wins: " + wins + "</b>");
                resetGame();
            }
            else if (playerSum >= computerPick) {
                alert("You lose!");
                losses ++;
-               $(".losses").text("Losses: " + losses);
+               $(".losses").html("<b>Losses: " + losses + "</b");
                resetGame();
            }
        });
@@ -112,19 +112,19 @@
            
            playerSum += num4;
            alert("New Score: " + playerSum);
-           $(".playerScore").text("Player Score: " + playerSum);
+           $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
 
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
-               $(".wins").text("Wins: " + losses);
+               $(".wins").html("<b>Wins: " + wins + "</b>");
                resetGame();
 
            }
            else if (playerSum >= computerPick) {
                alert("You lose!");
                losses ++;
-               $(".losses").text("Losses: " + losses);
+               $(".losses").html("<b>Losses: " + losses + "</b");
                resetGame();
                
            }
