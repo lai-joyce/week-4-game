@@ -21,48 +21,38 @@
    </div>
    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
    <script type="text/javascript">
-
     $(document).ready(function() {
        var computerPick = Math.ceil(Math.random() * 101 +19);
        $("#number-selected").text(computerPick);
        var playerSum = 0;
        var wins = 0;
        var losses = 0;
-
        numbers = [];
-
-       for (var i=0; i<3; i++) {
+       for (var i=0; i<4; i++) {
         numbers.push(Math.round(Math.random()*11 + 1));
        }
-
-
        function updateDisplay() {
           $("#number-selected").text(computerPick);
           $("#wins").text(wins);
           $("#losses").text(losses);
           $("#playerscore").text(playerSum);
        }
-
        function resetGame() {
         var computerPick = Math.ceil(Math.random() * 101 +19);
         $(".randomNumber").text("Number to Guess: " + computerPick);
-
-
-       for (var i=0; i<3; i++) {
+        numbers = [];
+       for (var i=0; i<4; i++) {
         numbers.push(Math.round(Math.random()*11 + 1));
        }
-
         playerSum = 0;
         $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
        }
-
        function changer() {
            if (playerSum === computerPick) {
                alert("You win!");
                wins ++;
                $("#wins").html(wins);
                resetGame();
-
            }
            else if (playerSum>= computerPick) {
                alert("You lose!");
@@ -73,41 +63,32 @@
        }
        
         updateDisplay();
-
        $(".crystal-image1").on("click", function() {
-
            playerSum += numbers[0];
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b>");
            changer();
-
            });
-
        $(".crystal-image2").on("click", function() {
            
            playerSum += numbers[1];
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
            changer();
-
            });
-
        $(".crystal-image3").on("click", function() {
            
            playerSum += numbers[2];
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
            changer();
-
            });
-
        $(".crystal-image4").on("click", function() {
            
            playerSum += numbers[3];
            alert("New Score: " + playerSum);
            $(".playerScore").html("<b>Player Score: " + playerSum + "</b");
            changer();
-
            });
     });
    </script>
